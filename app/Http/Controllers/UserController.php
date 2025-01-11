@@ -10,11 +10,19 @@ class UserController extends Controller
 {
     public function index() 
     {
-        return 'Hello World';
+        $users = User::all();
+        // regras de negócio
+        // variáveis e conteúdos -> view
+        return view('users.index', [
+            'greeting' => 'Hello World!',
+            'users' => $users
+        ]);
     }
 
     public function show(User $user) 
     {
-        return $user;
+        return view('users.show', [
+            'user' => $user
+        ]);
     }
 }

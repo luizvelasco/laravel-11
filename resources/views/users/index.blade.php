@@ -8,7 +8,10 @@
 </head>
 <body>
     <h1>{{ $greeting }}</h1>
-    {{ dd($users)}}
+
+    @foreach ($users as $user)
+        <div>{{ $user->name }} ({{ $user->email }})</div>
+    @endforeach
     
 </body>
 </html>

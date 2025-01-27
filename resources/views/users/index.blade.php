@@ -3,10 +3,10 @@
 
 @section('content')
 
-    <h1>{{ $greeting }}</h1>
+    <h1 class="title">{{ $greeting }}</h1>
 
     @foreach ($users as $user)
-        <div>{{ $user->name }} ({{ $user->email }})</div>
+        <div class="user-name">{{ $user->name }} ({{ $user->email }})</div>
     @endforeach
 
 @endsection

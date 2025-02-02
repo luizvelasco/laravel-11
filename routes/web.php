@@ -25,7 +25,27 @@ Route::get('/', function () {
     //$post = Post::where('title', 'meu segundo post')->first();
 
     // buscando registros forma 3
-    $post = Post::where('title', 'LIKE', '%post%')->get();
+    // $post = Post::where('title', 'LIKE', '%post%')->get();
+
+    // Atualizando registros forma 1
+    // $post = Post::find(1);
+    // $post->title = 'Meu novo título';
+    // $post->save();
+
+    // Atualizando registros forma 2
+    // $input = [
+    //     'title' => 'Meu novo título vindo do input',
+    //     'body' => 'Meu novo texto aqui e agora'
+    // ];
+
+    // $post = Post::find(1);
+    // $post->fill($input);
+    // $post->save();
+
+    // deletando registros
+    $post = Post::find(1);
+    $post->delete();
+
     
     dd($post);
     //return view('welcome');

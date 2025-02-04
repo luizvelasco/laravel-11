@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,12 +44,20 @@ Route::get('/', function () {
     // $post->save();
 
     // deletando registros
-    $post = Post::find(1);
-    $post->delete();
+    // $post = Post::find(1);
+    // $post->delete();
 
     
-    dd($post);
+    // dd($post);
     //return view('welcome');
+
+    // Relacionamentos 1 -> 1
+    $user = User::with('profile')->find(3);
+    // $user->profile()->create([
+    //     'type' => 'PJ',
+    //     'document_number' => '654654654'
+    // ]);
+    dd($user->profile->type);
 });
 
 Route::get('admin/usuarios', [UserController::class, 'index']);

@@ -76,6 +76,11 @@ Criar a migration
 php artisan make:migration create_name_table
 ```
 
+Criar a migration e model juntas (ex: User)
+```
+php artisan make:model User --migration
+```
+
 Executar as migration
 ```
 php artisan migrate

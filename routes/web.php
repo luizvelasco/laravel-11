@@ -52,12 +52,19 @@ Route::get('/', function () {
     //return view('welcome');
 
     // Relacionamentos 1 -> 1
-    $user = User::with('profile')->find(3);
+    //$user = User::with('profile')->find(3);
     // $user->profile()->create([
     //     'type' => 'PJ',
     //     'document_number' => '654654654'
     // ]);
-    dd($user->profile->type);
+
+    // Relacionamentos 1 -> N
+    $user = User::with('posts', 'profile')->find(1);
+    // $user->posts()->create([
+    //     'title' => 'Meu post de relacionamento',
+    //     'body' => 'Meu texto aqui'
+    // ]);
+    dd($user);
 });
 
 Route::get('admin/usuarios', [UserController::class, 'index']);

@@ -48,11 +48,16 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return$this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class);
     }
 
     public function posts()
     {
-        return$this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 }

@@ -69,11 +69,12 @@ Route::get('/', function () {
     // Relacionamentos N -> N
     // $roles = Role::all();
     // dd($roles);
-
-    $user = User::with('roles')->find(2);
-    $user->roles()->attach(2);
-    dd($user);
+    // $user = User::with('roles')->find(2);
+    // $user->roles()->attach(2);
+    // dd($user);
 });
 
-Route::get('admin/usuarios', [UserController::class, 'index']);
-Route::get('admin/usuarios/{user}', [UserController::class, 'show']);
+Route::get('admin/usuarios', [UserController::class, 'index'])->name('users.index');
+Route::get('admin/usuarios/cadastrar', [UserController::class, 'create'])->name('users.create');
+Route::post('admin/usuarios/cadastrar', [UserController::class, 'store'])->name('users.store');
+Route::get('admin/usuarios/{user}', [UserController::class, 'show'])->name('users.show');

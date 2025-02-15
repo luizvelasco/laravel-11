@@ -7,14 +7,24 @@
 
     <form action="{{ route('users.store') }}" method="POST">
         @csrf
+
+        {{ $errors->any() }}
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div>
+                {{ $error }}
+            </div>
+        @endforeach
+           
+        @endif
         <div>
             <label for="">Nome</label>
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{ old('name') }}">
         </div>
 
         <div>
             <label for="">Email</label>
-            <input type="text" name="email">
+            <input type="text" name="email" value="{{ old('email') }}">
         </div>
 
         <div>

@@ -31,8 +31,15 @@ class UserController extends Controller
         return view ('users.create');
     }
 
-    public function store () 
+    public function store (Request $request) 
     {
-        dd('store');
+        $input = $request->validate(([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:3',
+        ]));
+        User::create($input);
+
+        return redirect()->back();
     }
 }

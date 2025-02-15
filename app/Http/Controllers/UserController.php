@@ -10,9 +10,8 @@ class UserController extends Controller
 {
     public function index() 
     {
-        $users = User::all();
-        // regras de negócio
-        // variáveis e conteúdos -> view
+        $users = User::paginate(5);
+
         return view('users.index', [
             'greeting' => 'Hello World!',
             'users' => $users
@@ -37,9 +36,17 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:3',
+            'avatar' => 'file'
         ]));
-        User::create($input);
 
-        return redirect()->back();
+        if (!empty($input['avatar']) && $input['avatar']->isValid())
+        {
+            $input['avatar']->store();
+        }
+
+        dd($input);
+        // User::create($input);
+
+        // return redirect()->back();
     }
 }

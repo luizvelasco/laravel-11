@@ -5,7 +5,7 @@
 
     <h1>Cadastro de Usuário</h1>
 
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         {{ $errors->any() }}
@@ -30,6 +30,11 @@
         <div>
             <label for="">Senha</label>
             <input type="password" name="password">
+        </div>
+
+        <div>
+            <label for="">Avatar</label>
+            <input type="file" name="avatar">
         </div>
 
         <div>
